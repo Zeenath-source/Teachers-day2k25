@@ -65,6 +65,7 @@
 </head>
 <body>
 
+<!-- Selection container -->
 <div class="container" id="selectContainer">
     <h1>Happy Teachers' Day!</h1>
     <p>You are addressed as:</p>
@@ -75,6 +76,7 @@
     </select>
 </div>
 
+<!-- Wish container -->
 <div class="wish-section" id="wishSection" style="display:none;">
     <div class="wish-text" id="wishText"></div>
 </div>
@@ -82,9 +84,7 @@
 <script>
     const doodles = ['📚','✏️','🖍️','📝','⭐','🎒'];
 
-    // Create doodles continuously
-    let doodleInterval = setInterval(createDoodle, 500);
-
+    // Function to create doodles
     function createDoodle() {
         const doodle = document.createElement('div');
         doodle.classList.add('doodle');
@@ -96,20 +96,26 @@
         setTimeout(() => doodle.remove(), 8000);
     }
 
+    // Run doodles continuously
+    setInterval(createDoodle, 500);
+
+    // Show wish after selection
     function showWish() {
         const select = document.getElementById('addressSelect');
         const container = document.getElementById('selectContainer');
         const wishSection = document.getElementById('wishSection');
         const wishText = document.getElementById('wishText');
 
-        if(select.value === "Mam" || select.value === "Sir") {
+        if(select.value) {
             wishText.innerText = `Happy Teachers' Day ${select.value}!`;
-            container.style.display = 'none';
-            wishSection.style.display = 'block';
+            container.style.display = 'none';  // hide selection
+            wishSection.style.display = 'block'; // show wish
         }
     }
 </script>
 
 </body>
 </html>
+
+
 
